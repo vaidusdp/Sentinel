@@ -2,29 +2,13 @@ import "dotenv/config";
 
 import express from "express";
 import { supabase } from "./db/supabase.js";
+import userRouter from "./routes/user.routes.js";   
 
 const app = express();
 
 app.use(express.json());
 
-app.get("/health", async (req, res) => {
-    const { error } = await supabase
-        .from("users")
-        .select("id")
-        .limit(1);
-
-    if (error) {
-        return res.status(500).json({
-            status: "ERROR",
-            message: "Database connection failed"
-        });
-    }
-
-    return res.json({
-        status: "OK",
-        message: "Senitel + Supabase working"
-    });
-});
+app.use("/api/v1/users", userRouter);
 
 const port = process.env.PORT || 3000;
 
