@@ -10,16 +10,4 @@ router.post("/", register);
 router.post("/login", login);
 router.get("/me", authenticate, profile);
 
-router.get(
-    "/admin-test",
-    authenticate,
-    requireRole(UserRole.ADMIN),
-    (req, res) => {
-        return res.json({
-            success: true,
-            message: "Welcome Admin",
-        });
-    }
-)
-
 export default router;
