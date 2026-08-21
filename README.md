@@ -87,30 +87,33 @@ Sentinel/
 ### Models & Enums
 
 #### `UserRole` (Enum)
+
 - `USER`
 - `ADMIN`
 - `DEVELOPER`
 
 #### `User`
-| Field | Type | Attributes | Description |
-| :--- | :--- | :--- | :--- |
-| `id` | `String` | `@id`, `@default(uuid())` | Unique User ID |
-| `name` | `String` | | Full name |
-| `email` | `String` | `@unique` | Unique email address |
-| `password` | `String` | | Argon2 hashed password |
-| `role` | `UserRole` | `@default(USER)` | Assigned user role |
-| `createdAt` | `DateTime` | `@default(now())` | Account creation timestamp |
-| `updatedAt` | `DateTime` | `@updatedAt` | Account update timestamp |
+
+| Field       | Type       | Attributes                | Description                |
+| :---------- | :--------- | :------------------------ | :------------------------- |
+| `id`        | `String`   | `@id`, `@default(uuid())` | Unique User ID             |
+| `name`      | `String`   |                           | Full name                  |
+| `email`     | `String`   | `@unique`                 | Unique email address       |
+| `password`  | `String`   |                           | Argon2 hashed password     |
+| `role`      | `UserRole` | `@default(USER)`          | Assigned user role         |
+| `createdAt` | `DateTime` | `@default(now())`         | Account creation timestamp |
+| `updatedAt` | `DateTime` | `@updatedAt`              | Account update timestamp   |
 
 #### `Project`
-| Field | Type | Attributes | Description |
-| :--- | :--- | :--- | :--- |
-| `id` | `String` | `@id`, `@default(uuid())` | Unique Project ID |
-| `name` | `String` | | Project name |
-| `targetUrl` | `String` | | Target URL to monitor |
-| `ownerId` | `String` | | Foreign key to `User.id` |
-| `createdAt` | `DateTime` | `@default(now())` | Project creation timestamp |
-| `updatedAt` | `DateTime` | `@updatedAt` | Project update timestamp |
+
+| Field       | Type       | Attributes                | Description                |
+| :---------- | :--------- | :------------------------ | :------------------------- |
+| `id`        | `String`   | `@id`, `@default(uuid())` | Unique Project ID          |
+| `name`      | `String`   |                           | Project name               |
+| `targetUrl` | `String`   |                           | Target URL to monitor      |
+| `ownerId`   | `String`   |                           | Foreign key to `User.id`   |
+| `createdAt` | `DateTime` | `@default(now())`         | Project creation timestamp |
+| `updatedAt` | `DateTime` | `@updatedAt`              | Project update timestamp   |
 
 ---
 
@@ -145,6 +148,7 @@ JWT_EXPIRY=15m
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone <repository-url>
    cd Sentinel
@@ -158,6 +162,7 @@ JWT_EXPIRY=15m
 ### Database Setup
 
 1. Generate Prisma Client:
+
    ```bash
    npx prisma generate
    ```
@@ -176,11 +181,13 @@ JWT_EXPIRY=15m
 ```bash
 npm run dev
 ```
+
 The server will start at `http://localhost:3000`.
 
 ### Production Mode
 
 1. Build the TypeScript code:
+
    ```bash
    npm run build
    ```
@@ -199,6 +206,7 @@ The server will start at `http://localhost:3000`.
 ### User Routes (`/api/v1/users`)
 
 #### 1. Register User
+
 - **Method**: `POST`
 - **Endpoint**: `/api/v1/users`
 - **Access**: Public
@@ -225,6 +233,7 @@ The server will start at `http://localhost:3000`.
   ```
 
 #### 2. Login User
+
 - **Method**: `POST`
 - **Endpoint**: `/api/v1/users/login`
 - **Access**: Public
@@ -253,6 +262,7 @@ The server will start at `http://localhost:3000`.
   ```
 
 #### 3. Get User Profile
+
 - **Method**: `GET`
 - **Endpoint**: `/api/v1/users/me`
 - **Access**: Private (Requires Authentication)
@@ -286,11 +296,11 @@ The server will start at `http://localhost:3000`.
 
 ## 📜 Scripts
 
-| Command | Description |
-| :--- | :--- |
-| `npm run dev` | Starts the server in development mode with `tsx watch` |
-| `npm run build` | Compiles TypeScript source files into JavaScript |
-| `npm run start` | Executes the compiled production code from `dist/` |
+| Command         | Description                                            |
+| :-------------- | :----------------------------------------------------- |
+| `npm run dev`   | Starts the server in development mode with `tsx watch` |
+| `npm run build` | Compiles TypeScript source files into JavaScript       |
+| `npm run start` | Executes the compiled production code from `dist/`     |
 
 ---
 
