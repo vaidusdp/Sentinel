@@ -2,7 +2,6 @@ import type { Response, NextFunction } from "express";
 import type { AuthRequest } from "./auth.middlewares.js";
 import { UserRole } from "../../generated/prisma/enums.js";
 import { prisma } from "../db/prisma.js";
-import { success } from "zod";
 
 export const requireRole = (...allowedRoles: UserRole[]) => {
   return async (req: AuthRequest, res: Response, next: NextFunction) => {
